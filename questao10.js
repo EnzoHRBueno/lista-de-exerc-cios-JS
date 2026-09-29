@@ -1,19 +1,14 @@
 function verificarAprovacao(nota) {
-    if (nota >= 60) {
-        return nota == nota
-    } else {
-        return nota !== nota
-    }
+    return nota >= 60
 }
 
 function contarAprovados(listaAlunos) {
     let aprov = 0
-    for (let nome of listaAlunos) {
-        if (verificarAprovacao() == true) {
-            aprov += 1
-        } else {
-            aprov = aprov
+    for (let alunos of listaAlunos) {
+        if (verificarAprovacao(alunos.nota)) {
+            aprov++
         }
+
     }
     return aprov
 }
@@ -21,9 +16,9 @@ function contarAprovados(listaAlunos) {
 function executarAnalise() {
     const alunos = []
     for (let i = 0; i < 4; i++) {
-        alunos[i] = { }
-        alunos.nome = String(prompt("Digite o nome do aluno: "))
-        alunos.nota = Number(prompt("Digite a nota do aluno: "))
+        alunos[i] = {}
+        alunos[i].nome = String(prompt("Digite o nome do aluno: "))
+        alunos[i].nota = Number(prompt("Digite a nota do aluno: "))
     }
     return contarAprovados(alunos)
 }
