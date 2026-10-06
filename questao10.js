@@ -1,25 +1,39 @@
-function verificarAprovacao(nota) {
-    return nota >= 60
-}
 
-function contarAprovados(listaAlunos) {
-    let aprov = 0
-    for (let alunos of listaAlunos) {
-        if (verificarAprovacao(alunos.nota)) {
-            aprov++
+function preencheAlunos(){
+    const turma = []
+    for(let i = 0; i < 4; i++){
+        let aluno = {
+            nome: prompt("Digite o nome do aluno"),
+            nota: Number(prompt("Digite a nota do aluno ")+aluno.nome)
         }
-
+        turma.push(aluno)
     }
-    return aprov
+    return turma
 }
 
-function executarAnalise() {
-    const alunos = []
-    for (let i = 0; i < 4; i++) {
-        alunos[i] = {}
-        alunos[i].nome = String(prompt("Digite o nome do aluno: "))
-        alunos[i].nota = Number(prompt("Digite a nota do aluno: "))
+function verificarAprovacao(nota){
+    if(nota >= 60){
+        return true
+    }else{
+        return false
     }
-    return contarAprovados(alunos)
 }
-console.log(executarAnalise())
+function contarAprovados(turma){
+   let totalAprovados = 0
+   for(let aluno of turma){
+        let retorno = verificarAprovacao(aluno.nota)
+        if(retorno == true){
+            totalAprovados++
+        }
+   }
+    return totalAprovados
+}
+
+function executarAnalise(){
+    let turma = preencheAlunos()
+    let numeroAprovados = contarAprovados(turma)
+    alert(numeroAprovados)
+
+}
+
+executarAnalise()

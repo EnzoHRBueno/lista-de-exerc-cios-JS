@@ -1,17 +1,18 @@
+
 function somarElementos() {
-
     const vet = []
-    let soma = 0
-    for (let i = 0; i < 10; i++) {
-
-        vet[i] = Number(prompt("Digite um numero: "))
-
+    let tam = Number(prompt("Digite quantos elementos tem o vetor: "))
+    for (let i = 0; i < tam; i++) {
+        let v = Number(prompt("Digite os valores: "))
+        vet.push(v)
     }
-    for (let i = 0; i < 10; i++) {
-        soma = soma + vet[i]
-    }
-
-    return soma
+    return vet
 }
-
-alert(somarElementos())
+function somaArray(vet){
+    let somatorio = 0
+    for(let elementoAtual of vet){
+        somatorio = somatorio + elementoAtual
+    }
+    return somatorio
+}
+alert(somarElementos(vet))
